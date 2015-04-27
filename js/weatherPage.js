@@ -14,7 +14,7 @@ function fixHeader() {
     divName.innerHTML = "Welcome " + name;
     //<a href="/FinalProject/index.html"><div class="ui inverted green button">Log out</div> </a>
     var aDiv = document.createElement('a');
-    aDiv.href = "/FinalProject/index.html";
+    aDiv.href = "/index.html";
     var logoutButton = document.createElement("div");
     logoutButton.className = "ui inverted green button";
     logoutButton.innerHTML = "Log out";
