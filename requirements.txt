@@ -1,0 +1,56 @@
+Using one of the layouts you created earlier in the term (HTML, CSS), you are to create a web application that allows the user to sign up (register) and sign in(log in). Use the menu/navigation buttons in your layout to implement these functions.
+ 
+Sign Up (Registration)
+The user should be prompted to create an account with the following information.
+·         First Name
+·         Last Name
+·         User ID
+·         Password
+·         Password Verification
+·         Email
+·         Select a Major City
+·         Select a Color
+ 
+Your application should verify the following on the client side using JavaScript.
+·         First Name
+o    Verify that a first name has been entered
+·         Last Name
+o   Verify that a last name has been entered
+·         User ID
+o   8 – 15 characters with no spaces (I will check for too short and too long)
+·         Password
+o    8 – 15 characters with no spaces (I will check for too short and too long)
+o   It must match the user’s Password Verification entry
+·         Email
+o   Check for general formatting (e.g.  xxxx@xx.xxx , xxx.xxx@xxxx.xxx)
+·         City
+o   Check that one has been selected
+·         Color
+o   Check that one has been selected
+ 
+Your application should verify the following on the server side using PHP and MySQL.
+·         The User ID is not already being used
+o   Do this by first creating a database containing a data table of user information. Then, search for the entered User ID in the table.
+Your application should inform the user of any “Bad” information via…
+·         Text that tells them what is wrong
+·         Identification of incorrect entry fields with color
+Your application should communicate with the server via AJAX so that the user never leaves the page.
+ 
+Upon successful sign up (registration), the user should be…
+·         Given positive notification of a successful registration
+·         The background of the page should turn to some version of the selected color
+·         The five day forecast of their chosen city should be displayed
+o   This information can be obtained in JSON format from the YQL server via AJAX as demonstrated in class and shown in an example located in the Project05 resource folder on TSquare.
+ 
+Sign In (log In)
+The user should be prompted for their User ID and Password. The database should be queried to verify that these “match” for this user.
+ 
+Improper sign in (i.e. the User ID and Password do not “match” ) should result in a “polite” notification and the re-prompting of the user for sign in information.
+ 
+Upon proper sign in, the user should be…
+·         Given a greeting which welcomes them back
+·         The background of the page should turn to some version of the selected color
+·         The five day forecast of their chosen city should be displayed
+o   This information can be obtained in JSON format from the YQL server via AJAX as demonstrated in class and shown in an example located in the Project05 resource folder on TSquare.
+ 
+At no time should the user leave the page.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="final2803project" uuid="11090027-2e66-4646-9c00-2f8a56171e5d">
+    <database-info product="MySQL" version="5.6.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="finalproject"/>
+    <table name="user" schema="" catalog="finalproject" type="TABLE">
+      <column name="Username" sqlType="VARCHAR" precision="18" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Password" sqlType="VARCHAR" precision="18" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Firstname" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Lastname" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Color" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Username"/>
+      <index name="Username" unique="true" columns="Username"/>
+    </table>
+  </data-source>
+</component>

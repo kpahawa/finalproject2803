@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title> Weather Page </title>
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+<!-- 		<script type="text/javascript" href="js/home.js"> </script> -->
+		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+		<script src="js/weatherPage.js"></script>
+ 		<meta charset="UTF-8">
+	</head>
+
+	<body onload="fixHeader()">
+    <div id="topFile"></div>
+    <br>
+    <br>
+		<form id="choose">
+	    <select onchange="showRSS(this.value)">
+	      <option value="">Select a City</option>
+	      <option value="2357024">Atlanta</option>
+	      <option value="12590119">Houston</option>
+	      <option value="2459115">New York</option>
+	      <option value="2391279">Denver</option>
+	      <option value="2490383">Seattle</option>
+	      <option value="2458833">New Orleans</option>
+	    </select>
+  	</form>
+
+  	<h1> <span id = "style">  </span> </h1>
+    <div id="forecast"></div>
+
+
+	</body>
+
+</html>
+<!--- https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D2357024&format=json&diagnostics=true 
+-->

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title> Login Page! </title>
+		<link rel="stylesheet" type="text/css" href="css/home.css">
+    	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <script type="text/javascript" src="js/jscolor.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+ 		<meta charset="UTF-8">
+	</head>
+	<body>
+    <div class="container" id="SigninContainer">
+        <h1>Sign In</h1>
+        <form name="myForm" method="post" style="width: 50%; margin-left:25em;text-align: left; font-size: large;">
+            Username: <input type="text" name="uid" id="formEntryBox" placeholder = "Username">
+            Password: <input type="password" name="passwordInput" id="formEntryBox" placeholder = "Password">
+        </form>
+        <br>
+        <br>
+        <div class="ui grid" style="text-align: center;">
+            <div class="three wide column">
+                <div class="ui green inverted button" type="submit" onclick="validateForm()" style="font-size: large"> Submit</div>
+            </div>
+            <div class="three wide column">
+                <a href="/FinalProject/Signup.html"> <div class="ui inverted red button" style="font-size: large">Sign Up</div> </a>
+            </div>
+        </div>
+        <div id="errorMessages"></div>
+
+    </div>
+
+	</body>
+	<script type="text/javascript">
+        function browserCheck() {
+            if (typeof(localStorage) == 'undefined' ) {
+                alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+            }
+        }
+ 		function validateForm() {
+            var verified;
+            var div = document.getElementById('errorMessages');
+            var newDiv = document.createElement('div');
+            newDiv.id = 'block';
+            div.appendChild(newDiv);
+            newDiv.innerHTML = "";
+            var errorList = [];
+            var uid = document.forms["myForm"]["uid"].value;
+            var paswrd = document.forms["myForm"]["passwordInput"].value;
+
+            if (uid == null || uid == "") {
+                document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+                errorList.push("User ID cannot be blank");
+            }
+
+            if (paswrd == "" || paswrd == null) {
+                document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+                errorList.push("Password cannot be blank");
+            }
+
+            if (errorList.length != 0) {
+                div.innerHTML = div.innerHTML + 'Everything you missed: ';
+                for (var i = 0; i < errorList.length; i++) {
+                    div.innerHTML += '&#x0000A' + errorList[i];
+                }
+                return false;
+            }
+            else {
+                var xmlhttp = new XMLHttpRequest();
+                var nameValuePairs = "&UserID=" + uid + "&Password1=" + paswrd;
+                console.log(nameValuePairs);
+                xmlhttp.open("GET", "php/signIn.php?" + nameValuePairs, false);
+                xmlhttp.send();
+
+                if (xmlhttp.responseText != 1) {
+                    alert("Sorry, either Username or Password is incorrect...");
+                }
+                else {
+
+                    alert("loading the weather page!");
+                    browserCheck();
+                    localStorage.passedUID = uid;
+                    window.location = "/FinalProject/weather.html";
+                }
+            }
+        }
+
+
+	</script>	
+</html>

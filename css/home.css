@@ -1,0 +1,50 @@
+#formEntryBox {
+    width: 105%;
+    text-align: center;
+}
+
+#formEntryBoxWrong {
+	background-color: white;
+	border-color: red;
+	border-width: .3em;
+    text-align: center;
+    width: 105%;
+}
+
+#topFile {
+    margin-left: 5em;
+}
+
+#choose {
+    margin-left: 5em;
+}
+#forecast {
+    margin-left: 5em;
+}
+
+#style {
+    margin-left: 5em;
+}
+
+#SigninContainer {
+    width: 90%;
+    text-align: center;
+
+}
+
+#signUpContainer {
+    margin-left: 5em;
+    margin-top: 5em;
+    width: 90%;
+}
+
+#navButton {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: large;
+}
+
+#emailBox {
+    width: 80%;
+}

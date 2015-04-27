@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title> Sign up Page! </title>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <!-- 		<script type="text/javascript" href="js/home.js"> </script>
+     -->		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script type="text/javascript" src="js/jscolor.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container" id="signUpContainer">
+        <!--<div class="ui grid">-->
+            <!---->
+            <!---->
+        <!--</div>-->
+        <a href="/FinalProject/index.html" >  <div class="ui button red inverted" id="navButton">Sign in</div> </a>
+        <h1>Sign Up</h1>
+        <form name="myForm" method="post">
+            <div class="ui grid">
+                <div class="four wide column">
+                    First Name: <input type="text" name="fname" id="formEntryBox">
+                </div>
+                <div class="four wide column">
+                    Last Name: <input type="text" name="lname" id="formEntryBox">
+                </div>
+                <div class="four wide column">
+                    User ID: <input type="text" name="uid" id="formEntryBox" placeholder = "Must be between 8 and 15 characters">
+                </div>
+                <div class="four wide column">
+                    Email: <br><input type = "email" name="femail" id="emailBox" placeholder="Enter a valid email address">
+                </div>
+            </div>
+            <br>
+            <div class="ui grid">
+                <div class="four wide column">
+                    Password: <input type="password" name="passwordInput" id="formEntryBox" placeholder = "Must be between 8 and 15 characters">
+                </div>
+                <div class="four wide column">
+                    Password Verification: <input type="password" name="passwordVerify" id="formEntryBox">
+                </div>
+                <div class="four wide column">
+                    City:
+                    <form id="formEntryBox">
+                        <select onchange="curValue(this.value)">
+                            <option value="0">Select a City</option>
+                            <option value="2357024">Atlanta</option>
+                            <option value="12590119">Houston</option>
+                            <option value="2459115">New York</option>
+                            <option value="2391279">Denver</option>
+                            <option value="2490383">Seattle</option>
+                            <option value="2458833">New Orleans</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="four wide column">
+                    Color: <input type = "text" class="color" value = "" onchange="curValue(this.value)">
+                </div>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div class="ui inverted green button" type="submit" onclick="validateForm()" style="font-size: large;"> Submit </div>
+        <div id="errorMessages"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    var city;
+
+    var colorentered = "ffffff";
+    function curValue(enteredCity) {
+        city = enteredCity;
+    }
+    function curColorValue(enteredColor) {
+        colorentered = enteredColor;
+    }
+
+    function validateForm() {
+        var verified;
+        var div = document.getElementById('errorMessages');
+        var newDiv = document.createElement('div');
+        newDiv.id = 'block';
+        div.appendChild(newDiv);
+        newDiv.innerHTML = "";
+        var errorList = [];
+        var fname = document.forms["myForm"]["fname"].value;
+        var lname = document.forms["myForm"]["lname"].value;
+        var uid = document.forms["myForm"]["uid"].value;
+        var paswrd = document.forms["myForm"]["passwordInput"].value;
+        var paswrdVerify = document.forms["myForm"]["passwordVerify"].value;
+        var email = document.forms["myForm"]["femail"].value;
+        var chosenColor = colorentered;
+
+        if (fname == null || fname == "") {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("First name cannot be blank");
+        }
+
+        if (lname == null || lname == "") {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("Last name cannot be blank");
+        }
+
+        if (uid == null || uid == "") {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("User ID cannot be blank");
+        }
+        else if (uid.length < 8 || uid.length > 15) {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("User ID must be between 8 and 15 characters");
+        }
+
+        if (paswrd == "" || paswrd == null) {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("Password cannot be blank");
+        }
+        else if (paswrd.length < 8 || paswrd.length > 15) {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("Password must be between 8 and 15 characters");
+        }
+        if (paswrd != paswrdVerify) {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("Passwords do not match");
+        }
+        if (city == "") {
+            document.getElementById("formEntryBox").setAttribute("id", "formEntryBoxWrong");
+            errorList.push("City must be selected!");
+        }
+
+        if (errorList.length != 0) {
+            div.innerHTML = div.innerHTML + 'Everything you missed: ';
+            for (var i = 0; i < errorList.length; i++) {
+                div.innerHTML += '&#x0000A' + errorList[i];
+            }
+            return false;
+        }
+        else {
+            var xmlhttp = new XMLHttpRequest();
+            var nameValuePairs = "First=" + fname + "&Last=" + lname + "&UserID=" + uid + "&Password1=" + paswrd + "&Email=" + email + "&City=" + city + "&Color=" + colorentered;
+            console.log(nameValuePairs);
+            xmlhttp.open("GET", "php/signInUpApp.php?" + nameValuePairs, false);
+            xmlhttp.send();
+            if (xmlhttp.responseText == 1) {
+                alert("Sorry, username is taken");
+                verified = false;
+            }
+            else {
+                alert("loading the weather page!");
+                verified = true;
+                localStorage.passedUID = uid;
+                window.location = "/FinalProject/weather.html";
+
+            }
+        }
+    }
+</script>
+</html>

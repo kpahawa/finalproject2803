@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="final2803project" uuid="11090027-2e66-4646-9c00-2f8a56171e5d">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>finalproject.*</schema-pattern>
+      <default-schemas>finalproject.* seniordesigndata.*</default-schemas>
+    </data-source>
+  </component>
+</project>
